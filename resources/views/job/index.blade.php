@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <button class="w-full rounded-md border border-slate-300 bbg-slate px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-200">Filter</button>
+        <button class="w-full rounded-md border border-slate-300 bg-slate px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-200">Filter</button>
       </form>
     </x-card>
 
