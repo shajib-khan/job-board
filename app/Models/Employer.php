@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Models;
 
-use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Employer
+class Employer extends Model
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-    {
-        if (null === $request->user() || null === $request->user()->employer) {
-            return redirect()->route('employer.create')
-                ->with('error', 'You need to register as an employer first!');
-        }
+    use HasFactory;
 
-        return $next($request);
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
